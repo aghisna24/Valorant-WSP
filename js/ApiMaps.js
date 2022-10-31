@@ -15,7 +15,7 @@ function getMaps() {
             data.data.forEach((map) => {
                 contents.innerHTML += `
                 <div class="box">
-                <img src="${map.splash}" alt="" style="object-fit: cover; width: 100%; height:100%;">
+                <img src="${map.splash}" alt="" style="object-fit: cover; width: 100%; height:100%; margin-top: 0rem;">
                 <div class="content">
                     <h3>${map.displayName}</h3>
                     <p>${map.coordinates}</p>
@@ -41,12 +41,11 @@ function getMapMore(uuid) {
             ).style.backgroundImage = "url(" + resJsonn.data.splash + ")";
             contents.innerHTML = "";
             contents.innerHTML += ` 
-            <div class="box">
-            <img src="${resJsonn.data.displayIcon}" alt="" style="object-fit: cover; width: 100%;">
+            <div class="box" style="height: 40%; width= auto;">
+            <img src="${resJsonn.data.displayIcon}" alt="" style="object-fit: cover;  width: 100%; heigth: auto;">
             <div class="content">
                 <h3>${resJsonn.data.displayName}</h3>
                 <p>${resJsonn.data.coordinates}</p>
-                <a href="#" class="btn">see more</a>
             </div>
         </div>
             `;

@@ -17,11 +17,11 @@ function getWeapons() {
             data.data.forEach((weapon) => {
                 contents.innerHTML += `
                 <div class="box">
-                <img src="${weapon.displayIcon}" alt="">
+                <img src="${weapon.displayIcon}" alt="" style="width:80%; height:auto; margin-top: 8rem;">
                 <div class="content">
                     <h3>${weapon.displayName}</h3>
-                    <p>${weapon.description}</p>
-                    <a href="#" class="btn" onclick="getWeaponAbilities('${weapon.uuid}')">see more</a>
+                    <p>${weapon.category}</p>
+                    <a href="#" class="btn" onclick="getWeaponMore('${weapon.uuid}')">see more</a>
                 </div>
             </div>
                 `;
@@ -33,23 +33,26 @@ function getWeapons() {
         });
 }
 
-function getWeaponAbilities(uuid) {
-    fetch(`${weaponsEndPoint}/${uuid}/?abilities&${language}`)
+function getWeaponMore(uuid) {
+    fetch(`${weaponsEndPoint}/${uuid}/?${language}`)
         .then((response) => response.json())
         .then((resJsonn) => {
+            console.log(resJsonn);
             contents.innerHTML = "";
-            resJsonn.data.abilities.forEach((ability) => {
                 contents.innerHTML += `
-                <div class="box">
-                <img src="${ability.displayIcon}" alt="">
+                <div class="box" style="height:40rem; width:auto; margin-bottom:2rem;">
+                <img src="${resJsonn.data.displayIcon}" alt="">
                 <div class="content">
-                    <h3>${ability.displayName}</h3>
-                    <p>${ability.displayName}</p>
-                    <a href="#" class="btn">see more</a>
+                    <h3>${resJsonn.data.displayName}</h3>
+                    <p>Fire Rate: ${resJsonn.data.weaponStats.fireRate}</p>
+                    <p>Magazine: ${resJsonn.data.weaponStats.magazineSize}</p>
+                    <p>Equip Time: ${resJsonn.data.weaponStats.equipTimeSeconds} /S</p>
+                    <p>Reload Time: ${resJsonn.data.weaponStats.reloadTimeSeconds} /S</p>
+                    <p>First Bullet Accuracy: ${resJsonn.data.weaponStats.firstBulletAccuracy}</p>
+                    <p>Shotgun Pellet Count: ${resJsonn.data.weaponStats.shotgunPelletCount}</p>
                 </div>
             </div>
                 `;
-            });
         })
         .catch((error) => {
             console.log(error);
@@ -57,5 +60,5 @@ function getWeaponAbilities(uuid) {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-    getMaps();
+    getWeapons();
 });

@@ -214,7 +214,7 @@ section.gallery {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 2rem;
+    margin-top: 10rem;
 }
 
 .gallery .box-container .box-ability img {
@@ -248,7 +248,7 @@ section.gallery {
     text-align: center;
     background: rgba(0, 0, 0, .7);
     padding: 2rem;
-    padding-top: 5rem;
+    padding-top: 1rem;
 }
 
 .gallery .box-container .box:hover .content {

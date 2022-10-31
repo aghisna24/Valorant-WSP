@@ -15,7 +15,7 @@ function getAgents() {
             data.data.forEach((agent) => {
                 contents.innerHTML += `
                 <div class="box">
-                <img src="${agent.displayIcon}" alt="">
+                <img src="${agent.displayIcon}" alt="" style="margin-top: 2rem; object-fit:cover;">
                 <div class="content">
                     <h3>${agent.displayName}</h3>
                     <a href="#" class="btn" onclick="getAgentAbilities('${agent.uuid}')">see more</a>
@@ -44,7 +44,8 @@ function getAgentAbilities(uuid) {
                 <img src="${ability.displayIcon}" alt="">
                 <div class="content">
                     <h3>${ability.displayName}</h3>
-                    <p>${ability.slot}</p>
+                    <p style="color: #FFFFFF; font-size: 16px;">${ability.slot}</p>
+                    <p style="color: #FFFFFF; font-size: 14px;">${ability.description}</p>
                 </div>
             </div>
                 `;
